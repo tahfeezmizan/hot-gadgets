@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Accordion </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="tabs">
+            <h3 class="active">Tab 1</h3>
+            <h3>Tab 2</h3> 
+            <h3>Tab 3</h3>
+            <h3>Tab 4</h3>
+        </div>
+
+        <div class="tab-content">
+            <!-- first  -->
+            <div class="active">
+                <h4>First Title</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate illo, autem beatae aperiam suscipit sit praesentium earum doloribus iure libero. Perspiciatis laudantium assumenda, culpa non vero quibusdam? Laboriosam, repellat soluta?</p>
+            </div>
+        
+            <!-- Second  -->
+            <div>
+                <h4>Second Title</h4>
+                <p>culpa non vero quibusdam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate illo, autem beatae aperiam suscipit sit praesentium earum doloribus iure libero. Perspiciatis laudantium assumenda, Laboriosam, repellat soluta?</p>
+            </div>
+
+            <!-- Threed  -->
+            <div>
+                <h4>Threed Title</h4>
+                <p>autem beatae aperiam suscipit Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate illo, sit praesentium earum doloribus iure libero. Perspiciatis laudantium assumenda, culpa non vero quibusdam? Laboriosam, repellat soluta?</p>
+            </div>
+
+            <!-- Fourth  -->
+            <div>
+                <h4>Fourth Title</h4>
+                <p>assumenda, culpa non vero quibusdam? Laboriosam, repellat soluta?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate illo, autem beatae aperiam suscipit sit praesentium earum doloribus iure libero. Perspiciatis laudantium </p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        let tabs = document.querySelectorAll(".tabs h3");
+        let tabContents = document.querySelectorAll(".tab-content div");
+
+        tabs.forEach((tab,index)  => {
+            tab.addEventListener("click", () => {
+                tabContents.forEach(content => {
+                    content.classList.remove("active");
+                });
+                tabs.forEach((tab) => {
+                    tab.classList.remove("active");
+                });
+                tabContents[index].classList.add("active");
+                tabs[index].classList.add("active");
+            })
+        });
+    </script>
+</body>
+</html>
