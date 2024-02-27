@@ -72,36 +72,35 @@ const handleShowDetails = async (id) => {
 
 
 const showPhoneDetails = (phone) => {
-    console.log(phone)
+    console.log(phone);
 
-    const phoneDetails = document.createElement('div');
-    phoneDetails.innerHTML = `
-    <dialog id="show_detail_modal" class="modal modal-bottom sm:modal-middle">
-    <div class="modal-box">
-        <figure class="px-10 pt-10 text-center">
-        <img src="${phone.image}" alt="Shoes" class="rounded-xl" />
-        </figure>
-        <h2 class="card-title text-3xl pb-2">${phone.phone_name}</h2>
-        <p class="py-4">Press ESC key or click the button below to closeIt is a long established fact that a
-        reader will be distracted by the readable content of a page when looking at its layout.</p>
+    const phoneTitle = document.getElementById('phone-title');
+    phoneTitle.innerText = phone.name;
+    
+    const phoneStorage = document.getElementById('phone-storage');
+    phoneStorage.innerText = phone.mainFeatures.storage;
+    
+    const displaySize = document.getElementById('display-size');
+    displaySize.innerText = phone.mainFeatures.displaySize;
 
-        <p class="text-xl py-1"><span class="font-bold">Storage: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">Display Size: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">ChipSet: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">Memory: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">Slug: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">Released Date: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">Brand: ${phone.name} </span>Hello</p>
-        <p class="text-xl py-1"><span class="font-bold">GPS: ${phone.name} </span>Hello</p>
-        <div class="modal-action">
-        <form method="dialog">
-            <!-- if there is a button in form, it will close the modal -->
-            <button class="btn">Close</button>
-        </form>
-        </div>
-    </div>
-    </dialog>
-    `
+    const phoneChipset = document.getElementById('chipset');
+    phoneChipset.innerText = phone.mainFeatures.chipSet;
+
+    const memory = document.getElementById('memory');
+    memory.innerText = phone.mainFeatures.memory;
+    
+    const phoneSlug = document.getElementById('phone-slug');
+    phoneSlug.innerText = phone.slug;
+
+    const releaseDate = document.getElementById('released-date');
+    releaseDate.innerText = phone.releaseDate;
+
+    const phoneBrand = document.getElementById('phone-brand');
+    phoneBrand.innerText = phone.brand;
+    
+    const phoneGPS = document.getElementById('phone-gps');
+    phoneGPS.innerText = phone.others.GPS;
+
 
     //show the model
     show_detail_modal.showModal()

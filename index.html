@@ -43,31 +43,48 @@
 
           <!-- show products modal  -->
           <!-- Open the modal using ID.showModal() method -->
-          <!-- <dialog id="show_detail_modal" class="modal modal-bottom sm:modal-middle">
+          <dialog id="show_detail_modal" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
               <figure class="px-10 pt-10 text-center">
-                <img src="${phone.image}" alt="Shoes" class="rounded-xl" />
+                <img src="" alt="" class="rounded-xl" />
               </figure>
-              <h2 class="card-title text-3xl pb-2">${phone.phone_name}</h2>
+              <h2 id="phone-title" class="card-title text-3xl pb-2"></h2>
               <p class="py-4">Press ESC key or click the button below to closeIt is a long established fact that a
                 reader will be distracted by the readable content of a page when looking at its layout.</p>
 
-              <p class="text-xl py-1"><span class="font-bold">Storage: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">Display Size: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">ChipSet: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">Memory: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">Slug: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">Released Date: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">Brand: </span>Hello</p>
-              <p class="text-xl py-1"><span class="font-bold">GPS: </span>Hello</p>
+              <div class="font-bold text-xl py-2">
+                Storage: <span id="phone-storage" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                Display Size: <span id="display-size" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                ChipSet: <span id="chipset" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                Memory: <span id="memory" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                Slug: <span id="phone-slug" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                Released Date: <span id="released-date" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                Brand: <span id="phone-brand" class="font-normal"></span>
+              </div>
+              <div class="font-bold text-xl py-2">
+                GPS: <span id="phone-gps" class="font-normal"></span>
+              </div>
+
               <div class="modal-action">
                 <form method="dialog">
-                  
+                  <!-- if there is a button in form, it will close the modal -->
                   <button class="btn">Close</button>
                 </form>
               </div>
             </div>
-          </dialog> -->
+          </dialog>
 
 
           <div id="item-container" class="grid grid-cols-2 lg:grid-cols-3 gap-8">
