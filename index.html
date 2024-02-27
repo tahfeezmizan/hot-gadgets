@@ -22,6 +22,17 @@
     <section class="py-14">
       <div class="w-full lg:w-8/12 mx-auto px-3 lg:px-0 ">
 
+        <!-- search input  -->
+        <div class="py-5 mb-8">
+          <h2 class="text-4xl font-semibold text-center mb-8">Search your phone</h2>
+
+          <div class="flex text-center justify-center">
+            <input type="text" id="search-field" placeholder="Search your phone"
+              class="input input-bordered w-full max-w-xs" />
+            <button id="search-btn" onclick="handleSearch()" class="btn btn-info">Search</button>
+          </div>
+        </div>
+
         <!-- product Item  -->
         <div id="item-container" class="grid grid-cols-2 lg:grid-cols-3 gap-8">
         </div>
