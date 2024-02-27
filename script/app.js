@@ -1,5 +1,5 @@
 
-const loadPhone = async (searchItem, isShowAll) => {
+const loadPhone = async (searchItem = "iphone", isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchItem}`);
     const data = await res.json();
     const phones = data.data
@@ -23,8 +23,8 @@ const displayPhones = (phones, isShowAll) => {
     }
 
     // display only 9 fast phone 
-    if(!isShowAll){
-        phones = phones.slice(0 , 9)
+    if (!isShowAll) {
+        phones = phones.slice(0, 9)
     }
 
     // phones = phones.slice(0, 8);
@@ -32,7 +32,7 @@ const displayPhones = (phones, isShowAll) => {
 
     // console.log(phones)
     phones.forEach(phone => {
-        console.log(phone)
+        // console.log(phone)
 
         // create a div 
         const phoneCard = document.createElement('div');
@@ -43,21 +43,72 @@ const displayPhones = (phones, isShowAll) => {
         </figure>
         
         <div class="card-body items-center text-center">
-            <h2 class="card-title text-3xl">${phone.phone_name}</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <h2 class="card-title text-3xl pb-2">${phone.phone_name}</h2>
+            <p class="px-10 pb-4">There are many variations of passages of available, but the majority have suffered</p>
             <div class="card-actions">
-            <button class="btn btn-primary">Show Details</button>
+            <button onclick="handleShowDetails('${phone.slug}'); show_detail_modal.showModal()" class="btn btn-primary">Show Details</button>
             </div>
         </div>
         `;
         phoneContainer.appendChild(phoneCard);
     });
 
-
     // hide loading animation
-
     toggleLoadingAni(false)
 }
+
+
+// handle product show details 
+const handleShowDetails = async (id) => {
+    console.log('click', id);
+
+    // load single phone data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    const phone = data.data;
+
+    showPhoneDetails(phone)
+}
+
+
+const showPhoneDetails = (phone) => {
+    console.log(phone)
+
+    const phoneDetails = document.createElement('div');
+    phoneDetails.innerHTML = `
+    <dialog id="show_detail_modal" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+        <figure class="px-10 pt-10 text-center">
+        <img src="${phone.image}" alt="Shoes" class="rounded-xl" />
+        </figure>
+        <h2 class="card-title text-3xl pb-2">${phone.phone_name}</h2>
+        <p class="py-4">Press ESC key or click the button below to closeIt is a long established fact that a
+        reader will be distracted by the readable content of a page when looking at its layout.</p>
+
+        <p class="text-xl py-1"><span class="font-bold">Storage: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">Display Size: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">ChipSet: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">Memory: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">Slug: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">Released Date: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">Brand: ${phone.name} </span>Hello</p>
+        <p class="text-xl py-1"><span class="font-bold">GPS: ${phone.name} </span>Hello</p>
+        <div class="modal-action">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+        </form>
+        </div>
+    </div>
+    </dialog>
+    `
+
+    //show the model
+    show_detail_modal.showModal()
+
+
+}
+
 
 
 // handle search button 
@@ -89,4 +140,4 @@ const handleShowAll = () => {
     handleSearch(true)
 }
 
-// loadPhone()
+loadPhone()
