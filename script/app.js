@@ -1,13 +1,13 @@
 
-const loadPhone = async (searchItem) => {
+const loadPhone = async (searchItem, isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchItem}`);
     const data = await res.json();
     const phones = data.data
     // console.log(phones)
-    displayPhones(phones)
+    displayPhones(phones, isShowAll)
 }
 
-const displayPhones = phones => {
+const displayPhones = (phones, isShowAll) => {
 
     const phoneContainer = document.getElementById('item-container');
     phoneContainer.textContent = '';
@@ -15,16 +15,20 @@ const displayPhones = phones => {
     const showContainer = document.getElementById('showAllBtn');
 
     // display show all button if there are more phone 8
-    if (phones.length > 8) {
+    if (phones.length > 9 && !isShowAll) {
         showContainer.classList.remove('hidden');
     }
     else {
         showContainer.classList.add('hidden');
     }
 
+    // display only 9 fast phone 
+    if(!isShowAll){
+        phones = phones.slice(0 , 9)
+    }
 
-    // display ondly 9 fast phone 
-    phones = phones.slice(0, 8);
+    // phones = phones.slice(0, 8);
+
 
     // console.log(phones)
     phones.forEach(phone => {
@@ -57,13 +61,13 @@ const displayPhones = phones => {
 
 
 // handle search button 
-const handleSearch = () => {
+const handleSearch = (isShowAll) => {
     toggleLoadingAni(true);
 
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchText)
-    loadPhone(searchText)
+    loadPhone(searchText, isShowAll)
     searchText.value = '';
 }
 
@@ -71,12 +75,18 @@ const handleSearch = () => {
 const toggleLoadingAni = (isLoading) => {
     const loadingAnimation = document.getElementById('loading-animation');
 
-    if (isLoading === true) {
+    if (isLoading) {
         loadingAnimation.classList.remove('hidden')
     }
     else {
         loadingAnimation.classList.add('hidden')
     }
+}
+
+
+// handle show all button 
+const handleShowAll = () => {
+    handleSearch(true)
 }
 
 // loadPhone()
